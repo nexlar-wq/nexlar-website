@@ -2114,7 +2114,7 @@ let _sb = null;
 function load(key, def) { try { return JSON.parse(localStorage.getItem(key)) || def; } catch { return def; } }
 function save(key, val) {
   localStorage.setItem(key, JSON.stringify(val));
-  if (_sb) _sb.from('app_data').upsert({key, value: val}, {onConflict:'key'}).catch(e => console.warn('Supabase save error:', e));
+  if (_sb) (async()=>{ try{ await _sb.from('app_data').upsert({key,value:val},{onConflict:'key'}); }catch(e){ console.warn('Supabase:',e); } })();
 }
 function uid() { return Date.now().toString(36) + Math.random().toString(36).slice(2,6); }
 
