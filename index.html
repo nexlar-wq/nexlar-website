@@ -3510,7 +3510,6 @@ function handleCF(e) {
       if (rl('nx_leads'))         leads             = rl('nx_leads');
       if (rl('nx_orders'))        orders            = rl('nx_orders');
       if (rl('nx_portal_users'))  portalUsers       = rl('nx_portal_users');
-      if (rl('nx_admin_creds'))   adminCreds        = rl('nx_admin_creds');
     }
   } catch(e) { console.warn('Supabase nicht erreichbar, nutze lokale Daten:', e); }
   renderPublicShop();
